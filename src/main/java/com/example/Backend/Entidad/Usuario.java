@@ -10,16 +10,21 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Usuario {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String nombre;
-    private String email;
-    private String password;
-    
-    @Column(name = "role")
-    @Builder.Default
-    private String role = "ROLE_ESTUDIANTE"; 
-}
 
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Column(nullable = false)
+    @Builder.Default
+    private String role = "ROLE_ESTUDIANTE";
+}
